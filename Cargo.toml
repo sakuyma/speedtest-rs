@@ -1,0 +1,21 @@
+[package]
+name = "speedtest-cli"
+version = "1.2.0"
+edition = "2021"
+description = "Clean-room Rust reimplementation of the Ookla Speedtest CLI"
+license = "MIT"
+
+[[bin]]
+name = "speedtest"
+path = "src/main.rs"
+
+[dependencies]
+ureq = { version = "2.12", default-features = true }
+libc = "0.2"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = "symbols"
